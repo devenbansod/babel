@@ -1,7 +1,6 @@
 "use strict";
 
 const normalizeOptions = require("../lib/normalize-options.js");
-const assert = require("assert");
 
 const {
   checkDuplicateIncludeExcludes,
@@ -17,7 +16,7 @@ describe("normalize-options", () => {
       const normalized = normalizeOptions.default({
         include: ["babel-plugin-transform-spread", "transform-classes"],
       });
-      assert.deepEqual(normalized.include, [
+      expect(normalized.include).toEqual([
         "transform-spread",
         "transform-classes",
       ]);
@@ -30,110 +29,109 @@ describe("normalize-options", () => {
           exclude: ["transform-spread"],
         });
       };
-      assert.throws(normalizeWithSameIncludes, Error);
+      expect(normalizeWithSameIncludes).toThrow();
     });
   });
 
   describe("validateBoolOption", () => {
     it("`undefined` option returns false", () => {
-      assert(validateBoolOption("test", undefined, false) === false);
+      expect(validateBoolOption("test", undefined, false)).toBe(false);
     });
 
     it("`false` option returns false", () => {
-      assert(validateBoolOption("test", false, false) === false);
+      expect(validateBoolOption("test", false, false)).toBe(false);
     });
 
     it("`true` option returns true", () => {
-      assert(validateBoolOption("test", true, false) === true);
+      expect(validateBoolOption("test", true, false)).toBe(true);
     });
 
     it("array option is invalid", () => {
-      assert.throws(() => {
+      expect(() => {
         validateBoolOption("test", [], false);
-      });
+      }).toThrow();
     });
   });
 
   describe("checkDuplicateIncludeExcludes", function() {
     it("should throw if duplicate names in both", function() {
-      assert.throws(() => {
+      expect(() => {
         checkDuplicateIncludeExcludes(
           ["transform-regenerator", "map"],
           ["transform-regenerator", "map"],
         );
-      }, Error);
+      }).toThrow();
     });
 
     it("should not throw if no duplicate names in both", function() {
-      assert.doesNotThrow(() => {
+      expect(() => {
         checkDuplicateIncludeExcludes(["transform-regenerator"], ["map"]);
-      }, Error);
+      }).not.toThrow();
     });
   });
 
   describe("normalizePluginNames", function() {
     it("should drop `babel-plugin-` prefix if needed", function() {
-      assert.deepEqual(
+      expect(
         normalizePluginNames([
           "babel-plugin-transform-object-super",
           "transform-parameters",
         ]),
-        ["transform-object-super", "transform-parameters"],
-      );
+      ).toEqual(["transform-object-super", "transform-parameters"]);
     });
 
     it("should not throw if no duplicate names in both", function() {
-      assert.doesNotThrow(() => {
+      expect(() => {
         checkDuplicateIncludeExcludes(["transform-regenerator"], ["map"]);
-      }, Error);
+      }).not.toThrow();
     });
   });
 
   describe("validateModulesOption", () => {
     it("`undefined` option returns commonjs", () => {
-      assert(validateModulesOption() === "commonjs");
+      expect(validateModulesOption()).toBe("commonjs");
     });
 
     it("`false` option returns commonjs", () => {
-      assert(validateModulesOption(false) === false);
+      expect(validateModulesOption(false)).toBe(false);
     });
 
     it("commonjs option is valid", () => {
-      assert(validateModulesOption("commonjs") === "commonjs");
+      expect(validateModulesOption()).toBe("commonjs");
     });
 
     it("systemjs option is valid", () => {
-      assert(validateModulesOption("systemjs") === "systemjs");
+      expect(validateModulesOption("systemjs")).toBe("systemjs");
     });
 
     it("amd option is valid", () => {
-      assert(validateModulesOption("amd") === "amd");
+      expect(validateModulesOption("amd")).toBe("amd");
     });
 
     it("umd option is valid", () => {
-      assert(validateModulesOption("umd") === "umd");
+      expect(validateModulesOption("umd")).toBe("umd");
     });
 
     it("`true` option is invalid", () => {
-      assert.throws(() => {
+      expect(() => {
         validateModulesOption(true);
-      }, Error);
+      }).toThrow();
     });
 
     it("array option is invalid", () => {
-      assert.throws(() => {
-        assert(validateModulesOption([]));
-      }, Error);
+      expect(() => {
+        validateModulesOption([]);
+      }).toThrow();
     });
   });
   describe("validateIncludesAndExcludes", function() {
     it("should return empty arrays if undefined", function() {
-      assert.deepEqual(validateIncludesAndExcludes(), []);
+      expect(validateIncludesAndExcludes()).toEqual([]);
     });
     it("should throw if not in features", function() {
-      assert.throws(() => {
+      expect(() => {
         validateIncludesAndExcludes(["asdf"]);
-      }, Error);
+      }).toThrow();
     });
   });
 });
