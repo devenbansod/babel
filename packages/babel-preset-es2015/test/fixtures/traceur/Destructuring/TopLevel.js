@@ -6,4 +6,4 @@ var a, b, c, d;
 expect('hello').toBe(a);
 expect(',').toBe(b);
 expect('junk').toBe(c);
-assertArrayEquals(['world'], d);
+expect(d).toEqual(['world']);;

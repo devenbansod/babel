@@ -20,7 +20,7 @@ var object = {
 
 // ----------------------------------------------------------------------------
 
-assertArrayEquals([
+expect(Object.keys(object)).toEqual([
   '42',
   'x',
   'f',
@@ -32,7 +32,7 @@ assertArrayEquals([
   'function',
   'var',
   'class'
-], Object.keys(object));
+]);;
 
 function assertMethod(object, name) {
   expect(object.hasOwnProperty(name)).toBe(true);
@@ -58,7 +58,7 @@ assertMethod(object, 'class');
 expect(object.f).toBe(object.f());
 
 // Test the nested object.
-assertArrayEquals(['j'], Object.keys(object.x));
+expect(Object.keys(object.x)).toEqual(['j']);;
 assertMethod(object.x, 'j');
 
 // Test name binding.

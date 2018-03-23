@@ -38,11 +38,11 @@ expect(42).toBe(f());
 
 {
   let g = (...xs) => xs;
-  assertArrayEquals([0, 1, true], g(0, 1, true));
+  expect(g(0, 1, true)).toEqual([0, 1, true]);;
 }
 
 var h = (x, ...xs) => xs;
-assertArrayEquals([0, 1, true], h(-1, 0, 1, true));
+expect(h(-1, 0, 1, true)).toEqual([0, 1, true]);;
 
 expect(typeof (() => {})).toBe('function');
 expect(Object.getPrototypeOf(() => {})).toBe(Function.prototype);

@@ -39,49 +39,53 @@
   expect(expose``[0]).toHaveLength(1);
   expect(expose``[0].raw).toHaveLength(1);
 
-  assertArrayEquals(['a'], expose`a`[0].raw);
-  assertArrayEquals(['a'], expose`a`[0]);
+  expect(expose`a`[0].raw).toEqual(['a']);;
+  expect(expose`a`[0]).toEqual(['a']);;
 
-  assertArrayEquals(['\\n'], expose`\n`[0].raw);
-  assertArrayEquals(['\n'], expose`\n`[0]);
+  expect(expose`\n`[0].raw).toEqual(['\\n']);;
+  expect(expose`\n`[0]).toEqual(['\n']);;
 
-  assertArrayEquals(['\\r'], expose`\r`[0].raw);
-  assertArrayEquals(['\r'], expose`\r`[0]);
+  expect(expose`\r`[0].raw).toEqual(['\\r']);;
+  expect(expose`\r`[0]).toEqual(['\r']);;
 
-  assertArrayEquals(['\\f'], expose`\f`[0].raw);
-  assertArrayEquals(['\f'], expose`\f`[0]);
+  expect(expose`\f`[0].raw).toEqual(['\\f']);;
+  expect(expose`\f`[0]).toEqual(['\f']);;
 
-  assertArrayEquals(['\\b'], expose`\b`[0].raw);
-  assertArrayEquals(['\b'], expose`\b`[0]);
+  expect(expose`\b`[0].raw).toEqual(['\\b']);;
+  expect(expose`\b`[0]).toEqual(['\b']);;
 
-  assertArrayEquals(['\\u2028'], expose`\u2028`[0].raw);
-  assertArrayEquals(['\u2028'], expose`\u2028`[0]);
+  expect(expose`\u2028`[0].raw).toEqual(['\\u2028']);;
+  expect(expose`\u2028`[0]).toEqual(['\u2028']);;
 
-  assertArrayEquals(['\\u2029'], expose`\u2029`[0].raw);
-  assertArrayEquals(['\u2029'], expose`\u2029`[0]);
+  expect(expose`\u2029`[0].raw).toEqual(['\\u2029']);;
+  expect(expose`\u2029`[0]).toEqual(['\u2029']);;
 
-  assertArrayEquals(['a', 'b'], expose`a${x}b`[0].raw);
-  assertArrayEquals(['a', 'b'], expose`a${x}b`[0]);
+  expect(expose`a${x}b`[0].raw).toEqual(['a', 'b']);;
+  expect(expose`a${x}b`[0]).toEqual(['a', 'b']);;
 
   // These have tab characters in them.
-  assertArrayEquals(['\t', '\\t'], expose`	${x}\t`[0].raw);
-  assertArrayEquals(['\t', '\t'], expose`	${x}\t`[0]);
+  expect(expose`	${x}\t`[0].raw).toEqual(['\t', '\\t']);;
+  expect(expose`	${x}\t`[0]).toEqual(['\t', '\t']);;
 
-  assertArrayEquals(['\n', '\\n'], expose`
-${x}\n`[0].raw);
-  assertArrayEquals(['\n', '\n'], expose`
-${x}\n`[0]);
+  expect(expose`
+${x}\n`[0].raw).toEqual(['\n', '\\n']);;
+  expect(expose`
+${x}\n`[0]).toEqual(['\n', '\n']);;
 
   // These contains the ES new line chars \u2028 and \u2029
-  assertArrayEquals(['\u2028', '\\u2028'], expose` ${x}\u2028`[0].raw);
-  assertArrayEquals(['\u2028', '\u2028'], expose` ${x}\u2028`[0]);
+  expect(expose`
+${x}\u2028`[0].raw).toEqual(['\u2028', '\\u2028']);;
+  expect(expose`
+${x}\u2028`[0]).toEqual(['\u2028', '\u2028']);;
 
-  assertArrayEquals(['\u2029', '\\u2029'], expose` ${x}\u2029`[0].raw);
-  assertArrayEquals(['\u2029', '\u2029'], expose` ${x}\u2029`[0]);
+  expect(expose`
+${x}\u2029`[0].raw).toEqual(['\u2029', '\\u2029']);;
+  expect(expose`
+${x}\u2029`[0]).toEqual(['\u2029', '\u2029']);;
 
-  assertArrayEquals(['a/*b*/c'], expose`a/*b*/c`[0].raw);
-  assertArrayEquals(['a/*b*/c'], expose`a/*b*/c`[0]);
+  expect(expose`a/*b*/c`[0].raw).toEqual(['a/*b*/c']);;
+  expect(expose`a/*b*/c`[0]).toEqual(['a/*b*/c']);;
 
-  assertArrayEquals(['a'], expose/* comment */`a`[0].raw);
-  assertArrayEquals(['a'], expose/* comment */`a`[0]);
+  expect(expose/* comment */`a`[0].raw).toEqual(['a']);;
+  expect(expose/* comment */`a`[0]).toEqual(['a']);;
 };

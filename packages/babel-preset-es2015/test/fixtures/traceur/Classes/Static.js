@@ -65,6 +65,6 @@ class AccessorNamedStatic {
 
 x = 2;
 c = new AccessorNamedStatic();
-assertArrayEquals([c, 2], c.static);
+expect(c.static).toEqual([c, 2]);;
 c.static = 3;
-assertArrayEquals([c, 3], x);
+expect(x).toEqual([c, 3]);;

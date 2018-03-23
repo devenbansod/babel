@@ -8,10 +8,10 @@ function f(...args) {
 }
 
 var result = f(0, ...[1, 2], 3, ...G());
-assertArrayEquals([0, 1, 2, 3, 'hi', 'there'], result);
+expect(result).toEqual([0, 1, 2, 3, 'hi', 'there']);;
 
 result = f(...G());
-assertArrayEquals(['hi', 'there'], result);
+expect(result).toEqual(['hi', 'there']);;
 
 function g() {
   'use strict';

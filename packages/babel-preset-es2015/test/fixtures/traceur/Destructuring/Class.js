@@ -6,19 +6,19 @@ function MyError(s) {
 class C {
   constructor({message: [head, ...tail], name}) {
     expect('a').toBe(head);
-    assertArrayEquals(['b', 'c'], tail);
+    expect(tail).toEqual(['b', 'c']);;
     expect('Error').toBe(name);
   }
 
   method({message: [head, ...tail], name}) {
     expect('a').toBe(head);
-    assertArrayEquals(['b', 'c'], tail);
+    expect(tail).toEqual(['b', 'c']);;
     expect('Error').toBe(name);
   }
 
   set x({message: [head, ...tail], name}) {
     expect('a').toBe(head);
-    assertArrayEquals(['b', 'c'], tail);
+    expect(tail).toEqual(['b', 'c']);;
     expect('Error').toBe(name);
   }
 }

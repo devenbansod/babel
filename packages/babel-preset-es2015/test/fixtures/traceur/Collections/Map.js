@@ -86,7 +86,7 @@ t.forEach(function (value, key, map) {
 expect(cnt).toBe(9);
 t.delete('foo');
 
-assertArrayEquals(arrKeys, [
+expect([
   undefinedKey,
   nullKey,
   stringKey,
@@ -96,8 +96,8 @@ assertArrayEquals(arrKeys, [
   nanKey,
   zeroKey,
   'foo'
-]);
-assertArrayEquals(arr, [
+]).toEqual(arrKeys);;
+expect([
   'value8',
   'value9',
   'value5',
@@ -107,7 +107,7 @@ assertArrayEquals(arr, [
   'value10',
   'value11',
   42
-]);
+]).toEqual(arr);;
 
 // iterator
 arrKeys = [];
@@ -126,10 +126,10 @@ for (var mapIterItem of t) {
 expect(cnt).toBe(9);
 t.delete('foo');
 
-assertArrayEquals(arrKeys, [ undefinedKey, nullKey, stringKey,
+expect([ undefinedKey, nullKey, stringKey,
     numberKey, booleanKey, objectKey,
-    nanKey, zeroKey, 'foo' ]);
-assertArrayEquals(arr, [
+    nanKey, zeroKey, 'foo' ]).toEqual(arrKeys);;
+expect([
   'value8',
   'value9',
   'value5',
@@ -139,7 +139,7 @@ assertArrayEquals(arr, [
   'value10',
   'value11',
   42
-]);
+]).toEqual(arr);;
 
 
 // .entries()
@@ -155,7 +155,7 @@ for (var mapIterItem of t.entries()) {
 }
 expect(cnt).toBe(8);
 
-assertArrayEquals(arrKeys, [
+expect([
   undefinedKey,
   nullKey,
   stringKey,
@@ -164,8 +164,8 @@ assertArrayEquals(arrKeys, [
   objectKey,
   nanKey,
   zeroKey
-]);
-assertArrayEquals(arr, [
+]).toEqual(arrKeys);;
+expect([
   'value8',
   'value9',
   'value5',
@@ -174,7 +174,7 @@ assertArrayEquals(arr, [
   'value1',
   'value10',
   'value11'
-]);
+]).toEqual(arr);;
 
 
 // .keys()
@@ -187,7 +187,7 @@ for (var mapIterKey of t.keys()) {
 }
 expect(cnt).toBe(8);
 
-assertArrayEquals(arrKeys, [
+expect([
   undefinedKey,
   nullKey,
   stringKey,
@@ -196,7 +196,7 @@ assertArrayEquals(arrKeys, [
   objectKey,
   nanKey,
   zeroKey
-]);
+]).toEqual(arrKeys);;
 
 
 // .values()
@@ -209,7 +209,7 @@ for (var mapIterVal of t.values()) {
 }
 expect(cnt).toBe(8);
 
-assertArrayEquals(arr, [
+expect([
   'value8',
   'value9',
   'value5',
@@ -218,7 +218,7 @@ assertArrayEquals(arr, [
   'value1',
   'value10',
   'value11'
-]);
+]).toEqual(arr);;
 
 
 var t3 = new Map([ [[],[]], [{},{}], [NaN,NaN] ]);

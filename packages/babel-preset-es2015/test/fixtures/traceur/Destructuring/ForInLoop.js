@@ -10,7 +10,7 @@ var expectedTails = [['b', 'c'], ['e','f']];
 var i = 0;
 for (var [head, ...tail] in object) {
   expect(expectedHeads[i]).toBe(head);
-  assertArrayEquals(expectedTails[i], tail);
+  expect(tail).toEqual(expectedTails[i]);;
   i++;
 }
 expect(2).toBe(i);
