@@ -9,5 +9,5 @@ var o2 = {
 };
 
 assertArrayEquals(Object.keys(o1), Object.keys(o2));
-assert.equal(42, o1['\\\'']);
-assert.equal(42, o2['\\\'']);
+expect(o1['\\\'']).toBe(42);
+expect(o2['\\\'']).toBe(42);

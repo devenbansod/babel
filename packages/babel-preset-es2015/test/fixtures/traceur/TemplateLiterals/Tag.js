@@ -2,25 +2,25 @@
 
 {
   function expose(callSite, var_args) {
-    assert.isTrue(Array.isArray(callSite));
-    assert.isTrue(Object.isFrozen(callSite));
+    expect(Array.isArray(callSite)).toBe(true);
+    expect(Object.isFrozen(callSite)).toBe(true);
     var rawDescr = Object.getOwnPropertyDescriptor(callSite, 'raw');
-    assert.isTrue(rawDescr !== undefined);
-    assert.isTrue('value' in rawDescr);
-    assert.isFalse(rawDescr.enumerable);
-    assert.isFalse(rawDescr.writable);
-    assert.isFalse(rawDescr.configurable);
-    assert.isTrue(Object.isFrozen(callSite.raw));
-    assert.isTrue(Array.isArray(callSite.raw));
-    assert.isTrue(Object.isFrozen(callSite.raw));
-    assert.equal(callSite.raw.length, callSite.length);
+    expect(rawDescr !== undefined).toBe(true);
+    expect('value' in rawDescr).toBe(true);
+    expect(rawDescr.enumerable).toBe(false);
+    expect(rawDescr.writable).toBe(false);
+    expect(rawDescr.configurable).toBe(false);
+    expect(Object.isFrozen(callSite.raw)).toBe(true);
+    expect(Array.isArray(callSite.raw)).toBe(true);
+    expect(Object.isFrozen(callSite.raw)).toBe(true);
+    expect(callSite.raw).toHaveLength(callSite.length);
 
     // The number of the literal portions is always same or one greater than the
     // number of substitutions
     var literalPortionCount = callSite.raw.length;
     var substitutionCount = arguments.length - 1;
-    assert.isTrue(literalPortionCount == substitutionCount ||
-               literalPortionCount == substitutionCount + 1);
+    expect(literalPortionCount == substitutionCount ||
+               literalPortionCount == substitutionCount + 1).toBe(true);
 
     return arguments;
   }
@@ -28,16 +28,16 @@
   let x = 3;
   let y = 5;
 
-  assert.equal(1, expose``.length);
-  assert.equal(1, expose`a`.length);
-  assert.equal(2, expose`a${x}`.length);
-  assert.equal(2, expose`a${x} b`.length);
-  assert.equal(3, expose`a${x} ${y}`.length);
-  assert.equal(3, expose`${x}${y}`.length);
-  assert.equal(2, expose`${x}a`.length);
+  expect(expose``).toHaveLength(1);
+  expect(expose`a`).toHaveLength(1);
+  expect(expose`a${x}`).toHaveLength(2);
+  expect(expose`a${x} b`).toHaveLength(2);
+  expect(expose`a${x} ${y}`).toHaveLength(3);
+  expect(expose`${x}${y}`).toHaveLength(3);
+  expect(expose`${x}a`).toHaveLength(2);
 
-  assert.equal(1, expose``[0].length);
-  assert.equal(1, expose``[0].raw.length);
+  expect(expose``[0]).toHaveLength(1);
+  expect(expose``[0].raw).toHaveLength(1);
 
   assertArrayEquals(['a'], expose`a`[0].raw);
   assertArrayEquals(['a'], expose`a`[0]);
@@ -84,4 +84,4 @@ ${x}\n`[0]);
 
   assertArrayEquals(['a'], expose/* comment */`a`[0].raw);
   assertArrayEquals(['a'], expose/* comment */`a`[0]);
-}
+};

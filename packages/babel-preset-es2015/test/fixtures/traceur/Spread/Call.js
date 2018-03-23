@@ -15,7 +15,7 @@ assertArrayEquals(['hi', 'there'], result);
 
 function g() {
   'use strict';
-  assert.strictEqual(undefined, this);
+  expect(this).toBeUndefined();
 }
 
 g();
