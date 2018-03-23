@@ -12,14 +12,14 @@ function destructArray() {
 // ----------------------------------------------------------------------------
 
 var result = destructArray();
-assert.equal('hello', result.a);
-assert.equal(',', result.b);
+expect(result.a).toBe('hello');
+expect(result.b).toBe(',');
 assertArrayEquals(['world'], result.c);
-assert.isUndefined(result.d);
+expect(result.d).toBeUndefined();
 
 function testNested() {
   var a;
   [[a] = ['b']] = [];
   return a;
 }
-assert.equal(testNested(), 'b');
+expect(testNested()).toBe('b');

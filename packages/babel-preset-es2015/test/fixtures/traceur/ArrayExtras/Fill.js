@@ -44,4 +44,4 @@ expect([1, 2, 3].fill(5, 'hello', {})).toEqual([1, 2, 3]);
 // should handle bad this
 expect(function() {
   Array.prototype.fill.call(null, 5)
-}).toThrow('TypeError');
+}).toThrow(TypeError);

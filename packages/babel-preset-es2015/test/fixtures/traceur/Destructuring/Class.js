@@ -5,21 +5,21 @@ function MyError(s) {
 
 class C {
   constructor({message: [head, ...tail], name}) {
-    assert.equal('a', head);
+    expect('a').toBe(head);
     assertArrayEquals(['b', 'c'], tail);
-    assert.equal('Error', name);
+    expect('Error').toBe(name);
   }
 
   method({message: [head, ...tail], name}) {
-    assert.equal('a', head);
+    expect('a').toBe(head);
     assertArrayEquals(['b', 'c'], tail);
-    assert.equal('Error', name);
+    expect('Error').toBe(name);
   }
 
   set x({message: [head, ...tail], name}) {
-    assert.equal('a', head);
+    expect('a').toBe(head);
     assertArrayEquals(['b', 'c'], tail);
-    assert.equal('Error', name);
+    expect('Error').toBe(name);
   }
 }
 

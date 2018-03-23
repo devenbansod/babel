@@ -93,7 +93,7 @@ class OneExtWrapper {
 function checkClass(C) {
   var o = new C();
   expect(o.m()).toBe('m1');
-  expect(o.g()).toBe('g1');
+  expect(o.g).toBe('g1');
   o.x = 'x';
   expect(o.x).toBe('x1');
 }

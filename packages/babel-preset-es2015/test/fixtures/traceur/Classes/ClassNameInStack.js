@@ -9,7 +9,7 @@ try {
   fail('Should have thrown');
 } catch (ex) {
   if (ex.stack)
-    expect(String(ex.stack)).toEqual(stringContaining('MyClassName'));
+    expect(String(ex.stack)).toEqual(expect.stringContaining('MyClassName'));
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -25,5 +25,5 @@ try {
   fail('Should have thrown');
 } catch (ex) {
   if (ex.stack)
-    expect(String(ex.stack)).toEqual(stringContaining('MySecondClass'));
+    expect(String(ex.stack)).toEqual(expect.stringContaining('MySecondClass'));
 }

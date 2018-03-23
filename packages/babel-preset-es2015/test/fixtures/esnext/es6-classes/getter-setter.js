@@ -25,4 +25,4 @@ var forLoopProperties = [];
 for (var key in mazer) {
   forLoopProperties.push(key);
 }
-expect(forLoopProperties).toEqual(expect.not.stringContaining('name'));
+expect(forLoopProperties).not.toEqual(expect.stringContaining('name'));

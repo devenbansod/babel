@@ -8,7 +8,7 @@ function destructRest() {
 
 var result = destructRest();
 assertArrayEquals([1, 2, 3], result.a);
-assert.equal(1, result.b);
+expect(result.b).toBe(1);
 assertArrayEquals([2, 3], result.c);
 assertArrayEquals([], result.d);
 
