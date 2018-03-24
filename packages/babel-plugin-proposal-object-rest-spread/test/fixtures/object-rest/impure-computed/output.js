@@ -12,9 +12,9 @@ var _$a = {
 } = _$a,
     x = babelHelpers.objectWithoutProperties(_$a, [_ref].map(babelHelpers.toPropertyKey));
 
-expect({
+expect(x).toEqual({
   a: 1
-}).toEqual(x);
+});
 expect(key).toBe(2);
 expect(y).toBe(1); // takes care of the order
 
