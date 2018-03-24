@@ -13,14 +13,14 @@ var obj = {
   }
 
 };
-assert.equal(obj.x || (obj.x = 1), 1);
-assert.equal(sets, 1);
-assert.equal(obj.x || (obj.x = 2), 1);
-assert.equal(sets, 1);
-assert.equal(obj.x && (obj.x = 0), 0);
-assert.equal(sets, 2);
-assert.equal(obj.x && (obj.x = 3), 0);
-assert.equal(sets, 2);
+expect(obj.x || (obj.x = 1)).toBe(1);
+expect(sets).toBe(1);
+expect(obj.x || (obj.x = 2)).toBe(1);
+expect(sets).toBe(1);
+expect(obj.x && (obj.x = 0)).toBe(0);
+expect(sets).toBe(2);
+expect(obj.x && (obj.x = 3)).toBe(0);
+expect(sets).toBe(2);
 var gets = 0;
 var deep = {
   get obj() {
@@ -29,11 +29,11 @@ var deep = {
   }
 
 };
-assert.equal((_deep$obj = deep.obj).x || (_deep$obj.x = 1), 1);
-assert.equal(gets, 1);
-assert.equal((_deep$obj2 = deep.obj).x || (_deep$obj2.x = 2), 1);
-assert.equal(gets, 2);
-assert.equal((_deep$obj3 = deep.obj).x && (_deep$obj3.x = 0), 0);
-assert.equal(gets, 3);
-assert.equal((_deep$obj4 = deep.obj).x && (_deep$obj4.x = 3), 0);
-assert.equal(gets, 4);
+expect((_deep$obj = deep.obj).x || (_deep$obj.x = 1)).toBe(1);
+expect(gets).toBe(1);
+expect((_deep$obj2 = deep.obj).x || (_deep$obj2.x = 2)).toBe(1);
+expect(gets).toBe(2);
+expect((_deep$obj3 = deep.obj).x && (_deep$obj3.x = 0)).toBe(0);
+expect(gets).toBe(3);
+expect((_deep$obj4 = deep.obj).x && (_deep$obj4.x = 3)).toBe(0);
+expect(gets).toBe(4);
